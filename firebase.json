@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "mong-react-project.web.app",
+    "site": "mong-react-project",
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
