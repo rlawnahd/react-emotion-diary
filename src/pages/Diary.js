@@ -10,6 +10,12 @@ const Diary = () => {
   const diaryList = useContext(DiaryStateContext);
   const navigate = useNavigate();
   const [data, setData] = useState();
+
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 - ${id}번 일기`;
+  }, []);
+
   useEffect(() => {
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find(
@@ -44,7 +50,28 @@ const Diary = () => {
             />
           }
         />
-        <article></article>
+        <article>
+          <section>
+            <h4>오늘의 감정</h4>
+            <div
+              className={[
+                "diary_img_wrapper",
+                `diary_img_wrapper_${data.emotion}`,
+              ].join(" ")}
+            >
+              <img src={curEmotionData.emotion_img} />
+              <div className="emotion_descript">
+                {curEmotionData.emotion_descript}
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>오늘의 일기</h4>
+            <div className="diary_content_wrapper">
+              <p>{data.content}</p>
+            </div>
+          </section>
+        </article>
       </div>
     );
   }
